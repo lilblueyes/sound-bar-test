@@ -1,4 +1,4 @@
-const sounds = ["applause", "boo", "gasp", "tada", "victory", "wrong"];
+const sounds = ["applause", "boo", "gasp"];
 const buttons = document.getElementById("buttons");
 
 const stopSounds = () => {
