@@ -4,42 +4,75 @@
   box-sizing: border-box;
 }
 
+/* Pas de scroll, full viewport */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Corps centré au milieu de l'écran */
 body {
   background-color: rgb(161, 100, 223);
   font-family: "Poppins", sans-serif;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  align-items: center;      /* centre verticalement */
+  justify-content: center;  /* centre horizontalement */
   text-align: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
+  touch-action: manipulation;
 }
 
+/* Cache les balises audio */
+audio {
+  display: none;
+}
+
+/* Conteneur des boutons */
+#buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 90vw;
+}
+
+/* Style de base des boutons */
 .btn {
   background-color: rebeccapurple;
   border-radius: 5px;
   border: none;
   color: #fff;
-  margin: 1rem;
-  padding: 1.5rem 3rem;
+  margin: 0.5rem;
+  padding: 1rem 2.5rem;
   font-size: 1.2rem;
   font-family: inherit;
   cursor: pointer;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
+    opacity 0.1s ease,
+    background-color 0.1s ease,
+    color 0.1s ease;
+  max-width: 80vw;
 }
 
-.btn:hover {
-  opacity: 0.9;
-}
-
-.btn:focus {
-  outline: none;
-}
-
+/* Bouton en cours de lecture */
 .btn.playing {
   background-color: #ffffff;
   color: rebeccapurple;
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Hover desktop */
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Accessibilité focus */
+.btn:focus {
+  outline: none;
 }

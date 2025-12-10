@@ -1,12 +1,13 @@
 const sounds = ["applause", "boo", "gasp"];
-const buttons = document.getElementById("buttons");
+const buttonsContainer = document.getElementById("buttons");
 
 const stopSounds = () => {
   // Stop tous les sons
   sounds.forEach((sound) => {
-    const currentSound = document.getElementById(sound);
-    currentSound.pause();
-    currentSound.currentTime = 0;
+    const audio = document.getElementById(sound);
+    if (!audio) return;
+    audio.pause();
+    audio.currentTime = 0;
   });
 
   // Retire l'état "playing" de tous les boutons
@@ -16,29 +17,32 @@ const stopSounds = () => {
 };
 
 sounds.forEach((sound) => {
+  const audio = document.getElementById(sound);
+  if (!audio) return;
+
   const btn = document.createElement("button");
   btn.classList.add("btn");
+  // Tu peux changer le texte ici si tu veux des labels plus jolis
   btn.innerText = sound;
-
-  const audio = document.getElementById(sound);
 
   btn.addEventListener("click", () => {
     const isAlreadyPlaying =
       !audio.paused && !audio.ended && audio.currentTime > 0;
 
+    // On stoppe tout
     stopSounds();
 
-    // Si on reclique sur le même bouton alors que ça jouait déjà, on arrête juste
+    // Si on reclique sur le bouton déjà en lecture, on arrête juste
     if (!isAlreadyPlaying) {
       audio.play();
       btn.classList.add("playing");
     }
   });
 
-  // Quand le son se termine naturellement, on enlève l'état "playing"
+  // Quand le son se termine, on enlève l'état playing
   audio.addEventListener("ended", () => {
     btn.classList.remove("playing");
   });
 
-  buttons.appendChild(btn);
+  buttonsContainer.appendChild(btn);
 });
