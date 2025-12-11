@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 
-html,
+/* html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
-}
+} */
 
 /* Corps centré, fond stylé */
 body {
