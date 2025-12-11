@@ -22,8 +22,7 @@ sounds.forEach((sound) => {
 
   const btn = document.createElement("button");
   btn.classList.add("btn");
-  // Tu peux changer le texte ici si tu veux des labels plus jolis
-  btn.innerText = sound;
+  btn.innerText = sound; // tu peux renommer en français si tu veux
 
   btn.addEventListener("click", () => {
     const isAlreadyPlaying =

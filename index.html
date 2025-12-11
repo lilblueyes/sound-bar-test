@@ -22,13 +22,21 @@
   </head>
 
   <body>
+    <div class="app">
+      <header>
+        <h1>Sound Board</h1>
+        <p>Appuie sur un bouton pour jouer un son</p>
+      </header>
+
+      <main>
+        <div id="buttons"></div>
+      </main>
+    </div>
+
     <!-- Sons -->
     <audio src="./sounds/applause.mp3" id="applause"></audio>
     <audio src="./sounds/boo.mp3" id="boo"></audio>
     <audio src="./sounds/gasp.mp3" id="gasp"></audio>
-
-    <!-- Conteneur des boutons générés en JS -->
-    <div id="buttons"></div>
 
     <script src="./script.js"></script>
   </body>

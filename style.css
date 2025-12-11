@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-/* Pas de scroll, full viewport */
+/* Pas de scroll, plein écran */
 html,
 body {
   margin: 0;
@@ -13,15 +13,46 @@ body {
   overflow: hidden;
 }
 
-/* Corps centré au milieu de l'écran */
+/* Corps centré, fond stylé */
 body {
-  background-color: rgb(161, 100, 223);
+  background: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
   font-family: "Poppins", sans-serif;
   display: flex;
-  align-items: center;      /* centre verticalement */
-  justify-content: center;  /* centre horizontalement */
+  align-items: center;
+  justify-content: center;
   text-align: center;
   touch-action: manipulation;
+}
+
+/* Carte de l'app */
+.app {
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 1.8rem 1.9rem;
+  max-width: 480px;
+  width: 90vw;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
+}
+
+/* Titre et sous-titre */
+header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+header p {
+  margin: 0 0 1.4rem;
+  font-size: 0.9rem;
+  color: #c7d2fe;
+  opacity: 0.9;
+}
+
+/* Zone principale */
+main {
+  display: flex;
+  justify-content: center;
 }
 
 /* Cache les balises audio */
@@ -36,27 +67,28 @@ audio {
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  max-width: 90vw;
+  max-width: 100%;
 }
 
 /* Style de base des boutons */
 .btn {
   background-color: rebeccapurple;
-  border-radius: 5px;
+  border-radius: 999px;
   border: none;
   color: #fff;
-  margin: 0.5rem;
-  padding: 1rem 2.5rem;
-  font-size: 1.2rem;
+  margin: 0.35rem;
+  padding: 0.9rem 1.9rem;
+  font-size: 1rem;
   font-family: inherit;
   cursor: pointer;
+  max-width: 80vw;
+  min-width: 160px;
   transition:
     transform 0.1s ease,
     box-shadow 0.1s ease,
     opacity 0.1s ease,
     background-color 0.1s ease,
     color 0.1s ease;
-  max-width: 80vw;
 }
 
 /* Bouton en cours de lecture */
@@ -64,7 +96,7 @@ audio {
   background-color: #ffffff;
   color: rebeccapurple;
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.5);
 }
 
 /* Hover desktop */
@@ -72,7 +104,23 @@ audio {
   opacity: 0.9;
 }
 
-/* Accessibilité focus */
+/* Focus accessibilité */
 .btn:focus {
   outline: none;
+}
+
+/* Ajustement mobile petit écran */
+@media (max-width: 400px) {
+  .app {
+    padding: 1.4rem 1.1rem;
+  }
+
+  header h1 {
+    font-size: 1.35rem;
+  }
+
+  .btn {
+    padding: 0.85rem 1.6rem;
+    font-size: 0.95rem;
+  }
 }
