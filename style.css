@@ -11,25 +11,22 @@ body {
   margin: 0;
 }
 
-/* Fallback: si un gradient saute, tu ne verras jamais “full bleu” */
 html {
-  background-color: #e0c3fc;
+  background-color: #e0c3fc; /* fallback mauve */
 }
 
 body {
   font-family: "Poppins", sans-serif;
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   text-align: center;
-  touch-action: manipulation;
-  flex-wrap: wrap;
 
   position: relative;
   background: transparent;
 
-  /* iOS: évite les bugs de 100vh */
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
@@ -37,7 +34,7 @@ body {
   overflow: hidden;
 }
 
-/* Fond plein écran au-dessus de html, derrière le contenu */
+/* Fond plein écran, fiable iOS */
 body::before {
   content: "";
   position: fixed;
@@ -45,30 +42,20 @@ body::before {
   z-index: 0;
   pointer-events: none;
 
-  /* fallback mauve (important) */
+  /* Base: toujours visible, même si radial saute */
   background-color: #e0c3fc;
+  background-image: linear-gradient(180deg, #e0c3fc 0%, #e0c3fc 35%, #8ec5fc 100%);
 
-  /* Base douce (mauve bien présent en haut) */
+  /* Ajout “radial” par dessus (si supporté) */
   background-image:
-    linear-gradient(180deg, #e0c3fc 0%, #e0c3fc 45%, #8ec5fc 100%),
-    -webkit-radial-gradient(120% 85% at 50% 0%, #ffffff33 0%, transparent 60%),
-    radial-gradient(120% 85% at 50% 0%, #ffffff33 0%, transparent 60%);
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(180deg, #e0c3fc 0%, #e0c3fc 35%, #8ec5fc 100%);
 
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* Fix iOS plus ancien */
-@supports (-webkit-touch-callout: none) {
-  html {
-    height: -webkit-fill-available;
-  }
-  body {
-    min-height: -webkit-fill-available;
-  }
-}
-
-/* Carte de l'app */
+/* Contenu au dessus du fond */
 .app {
   position: relative;
   z-index: 1;
@@ -82,7 +69,6 @@ body::before {
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
 }
 
-/* Titre et sous-titre */
 header h1 {
   margin: 0 0 0.25rem;
   font-size: 1.6rem;
@@ -105,7 +91,6 @@ audio {
   display: none;
 }
 
-/* Conteneur des boutons */
 #buttons {
   display: flex;
   flex-wrap: wrap;
@@ -115,7 +100,6 @@ audio {
   max-width: 100%;
 }
 
-/* Style de base des boutons */
 .btn {
   background-color: rebeccapurple;
   border-radius: 999px;
