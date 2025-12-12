@@ -6,7 +6,7 @@
 
 /* Corps centré, fond stylé */
 body {
-  background: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
+  background: #e0c3fc;
   font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
