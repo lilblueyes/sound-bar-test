@@ -23,12 +23,12 @@ body {
   touch-action: manipulation;
 }
 
-/* body {
+body {
   flex-wrap: wrap;
   height: 100vh;
   overflow: hidden;
   margin: 0;
-} */
+}
 
 /* Carte de l'app */
 .app {
