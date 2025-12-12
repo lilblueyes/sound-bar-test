@@ -11,23 +11,25 @@ body {
   margin: 0;
 }
 
+/* Fallback: si un gradient saute, tu ne verras jamais “full bleu” */
 html {
-  background-color: #8ec5fc; /* fallback */
+  background-color: #e0c3fc;
 }
 
 body {
   font-family: "Poppins", sans-serif;
 
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   text-align: center;
+  touch-action: manipulation;
+  flex-wrap: wrap;
 
   position: relative;
   background: transparent;
 
-  /* iOS: éviter 100vh */
+  /* iOS: évite les bugs de 100vh */
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
@@ -35,7 +37,7 @@ body {
   overflow: hidden;
 }
 
-/* Fond plein écran fiable sur iOS */
+/* Fond plein écran au-dessus de html, derrière le contenu */
 body::before {
   content: "";
   position: fixed;
@@ -43,17 +45,30 @@ body::before {
   z-index: 0;
   pointer-events: none;
 
-  background-color: #8ec5fc;
+  /* fallback mauve (important) */
+  background-color: #e0c3fc;
 
-  /* Mauve bien présent dès tout en haut */
+  /* Base douce (mauve bien présent en haut) */
   background-image:
-    -webkit-radial-gradient(120% 90% at 50% 0%, #e0c3fc 0%, #e0c3fc 45%, #8ec5fc 100%),
-    radial-gradient(120% 90% at 50% 0%, #e0c3fc 0%, #e0c3fc 45%, #8ec5fc 100%);
+    linear-gradient(180deg, #e0c3fc 0%, #e0c3fc 45%, #8ec5fc 100%),
+    -webkit-radial-gradient(120% 85% at 50% 0%, #ffffff33 0%, transparent 60%),
+    radial-gradient(120% 85% at 50% 0%, #ffffff33 0%, transparent 60%);
+
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* Contenu au dessus du fond */
+/* Fix iOS plus ancien */
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: -webkit-fill-available;
+  }
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Carte de l'app */
 .app {
   position: relative;
   z-index: 1;
@@ -67,6 +82,7 @@ body::before {
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
 }
 
+/* Titre et sous-titre */
 header h1 {
   margin: 0 0 0.25rem;
   font-size: 1.6rem;
@@ -89,6 +105,7 @@ audio {
   display: none;
 }
 
+/* Conteneur des boutons */
 #buttons {
   display: flex;
   flex-wrap: wrap;
@@ -98,6 +115,7 @@ audio {
   max-width: 100%;
 }
 
+/* Style de base des boutons */
 .btn {
   background-color: rebeccapurple;
   border-radius: 999px;
