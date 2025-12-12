@@ -7,18 +7,20 @@
 html,
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
 }
 
-/* Fond plein écran, plus fiable sur mobile (iOS Safari) */
+/* Mettre le fond sur html ET body évite pas mal de bandes/blanc iOS */
 html {
   background-color: #8ec5fc; /* fallback */
   background-image: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
 }
 
-/* Corps centré */
 body {
-  background: transparent;
+  background-color: #8ec5fc; /* fallback */
+  background-image: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
+
   font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
@@ -27,11 +29,22 @@ body {
   touch-action: manipulation;
   flex-wrap: wrap;
 
+  /* éviter le bug 100vh sur mobile */
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
 
   overflow: hidden;
+}
+
+/* Fix iOS plus ancien: 100vh instable, fill-available aide */
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: -webkit-fill-available;
+  }
+  body {
+    min-height: -webkit-fill-available;
+  }
 }
 
 /* Carte de l'app */
