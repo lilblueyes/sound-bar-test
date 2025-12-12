@@ -10,7 +10,15 @@ body {
   margin: 0;
 }
 
+/* Fond plein écran, plus fiable sur mobile (iOS Safari) */
+html {
+  background-color: #8ec5fc; /* fallback */
+  background-image: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
+}
+
+/* Corps centré */
 body {
+  background: transparent;
   font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
@@ -19,23 +27,12 @@ body {
   touch-action: manipulation;
   flex-wrap: wrap;
 
-  position: relative;
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
+
+  overflow: hidden;
 }
-
-/* Fond plein écran, robuste sur iOS */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-
-  background-color: #8ec5fc; /* fallback */
-  background-image: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
-}
-
 
 /* Carte de l'app */
 .app {
