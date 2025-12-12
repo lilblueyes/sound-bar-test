@@ -11,17 +11,15 @@ body {
   margin: 0;
 }
 
-/* Mettre le fond sur html ET body évite pas mal de bandes/blanc iOS */
+/* Fallback solide partout */
 html {
-  background-color: #8ec5fc; /* fallback */
-  background-image: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
+  background-color: #8ec5fc;
 }
 
 body {
-  background-color: #8ec5fc; /* fallback */
-  background-image: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
-
+  background-color: #8ec5fc;
   font-family: "Poppins", sans-serif;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +27,6 @@ body {
   touch-action: manipulation;
   flex-wrap: wrap;
 
-  /* éviter le bug 100vh sur mobile */
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
@@ -37,7 +34,22 @@ body {
   overflow: hidden;
 }
 
-/* Fix iOS plus ancien: 100vh instable, fill-available aide */
+/* Fond plein écran en fixed: c’est ce qui évite les bandes iOS */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-color: #8ec5fc;
+
+  /* Dégradé “plus grand” pour être bien visible dès tout en haut */
+  background-image: radial-gradient(120% 90% at 50% 0%, #e0c3fc 0%, #8ec5fc 70%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Fix iOS plus ancien */
 @supports (-webkit-touch-callout: none) {
   html {
     height: -webkit-fill-available;
