@@ -4,26 +4,15 @@
   box-sizing: border-box;
 }
 
-/* html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-} */
-
 /* Corps centré, fond stylé */
 body {
-  background-color: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
+  background: radial-gradient(circle at top, #e0c3fc, #8ec5fc);
   font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   touch-action: manipulation;
-}
-
-body {
   flex-wrap: wrap;
   height: 100vh;
   overflow: hidden;
